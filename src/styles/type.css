@@ -1,0 +1,21 @@
+.display { font-family: var(--f-display); font-weight: 400; line-height: .92; letter-spacing: -.02em; text-wrap: balance; }
+.display em { font-style: italic; color: var(--c-rose-ink); letter-spacing: -.01em; }
+.display--m  { font-size: var(--fs-m); }
+.display--l  { font-size: var(--fs-l); }
+.display--xl { font-size: var(--fs-xl); text-transform: uppercase; letter-spacing: -.035em; }
+.eyebrow { font: 600 var(--fs-eyebrow)/1 var(--f-sans); letter-spacing: .26em; text-transform: uppercase; color: var(--c-ink-2); margin-bottom: 1.4rem; display: flex; align-items: center; gap: .8rem; }
+.eyebrow::before { content: ''; width: 2.2rem; height: 1px; background: currentColor; opacity: .5; }
+.section__head--center .eyebrow { justify-content: center; }
+.section__head--center .eyebrow::before { display: none; }
+
+.section { position: relative; padding: clamp(5rem, 12vw, 12rem) var(--gutter); }
+.section__head { max-width: var(--maxw); margin: 0 auto clamp(2.5rem, 6vw, 6rem); position: relative; z-index: 2; }
+.section__head--center { text-align: center; }
+.section__head--center .display { margin-inline: auto; }
+.section__note, .section__fine { color: var(--c-ink-3); font-size: .85rem; max-width: 46ch; margin-top: 1.6rem; }
+.section__head--center .section__note { margin-inline: auto; }
+.section__fine { text-align: center; margin: 2.4rem auto 0; position: relative; z-index: 2; }
+
+/* Split-text line (JS wraps words) */
+.sw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.sw > i { display: inline-block; font-style: inherit; will-change: transform; }

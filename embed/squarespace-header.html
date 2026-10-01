@@ -1,0 +1,21 @@
+<!-- ============================================================================
+  SQUARESPACE → Settings → Developer Tools → Code Injection → HEADER
+  (Code Injection needs a Business plan or higher.)
+  Purpose: hide the default Squarespace page instantly on the takeover URL(s) so visitors never see
+  a flash of the old page. Fails safe: un-hides itself after 6s if the experience can't load.
+============================================================================ -->
+<style>html.sws-pre body > *{visibility:hidden!important}</style>
+<script>
+  (function () {
+    var paths = ['/'];                        // keep in sync with takeoverPaths in the footer snippet
+    var p = location.pathname.replace(/\/+$/, '') || '/';
+    var off = /[?&]sws=off\b/.test(location.search) || window.top !== window.self;
+    if (!off && paths.indexOf(p) > -1) {
+      document.documentElement.classList.add('sws-pre');
+      setTimeout(function () { document.documentElement.classList.remove('sws-pre'); }, 6000);
+    }
+  })();
+</script>
+<!-- Speeds up the first connection to wherever you host the build (change the origin). -->
+<link rel="preconnect" href="https://experience.superwomanstack.com" crossorigin>
+<link rel="modulepreload" href="https://experience.superwomanstack.com/sws-embed.js" crossorigin>

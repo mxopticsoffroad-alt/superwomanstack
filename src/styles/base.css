@@ -1,0 +1,68 @@
+/* Scoped reset — everything lives under .sws so it can't fight Squarespace's CSS. */
+.sws, .sws *, .sws *::before, .sws *::after { box-sizing: border-box; }
+.sws {
+  position: relative;
+  color: var(--c-ink);
+  background: var(--c-white);
+  font-family: var(--f-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  isolation: isolate;
+}
+:where(.sws) :where(h1, h2, h3, p, ul, ol, figure, fieldset, legend) { margin: 0; padding: 0; }
+:where(.sws) :where(ul, ol) { list-style: none; }
+:where(.sws) a { color: inherit; text-decoration: none; }
+:where(.sws) :where(img, video, canvas, svg) { display: block; max-width: 100%; }
+:where(.sws) :where(button, input) { font: inherit; color: inherit; }
+:where(.sws) button { cursor: pointer; background: none; border: 0; padding: 0; }
+.sws a, .sws button, .sws label { -webkit-tap-highlight-color: transparent; }
+:where(.sws) fieldset { border: 0; min-width: 0; }
+:where(.sws) em { font-style: italic; }
+.sws ::selection { background: var(--c-baby); color: var(--c-ink); }
+
+.sws :focus-visible { outline: 2px solid var(--c-rose-ink); outline-offset: 3px; border-radius: 6px; }
+
+.sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.sws-skip { position: fixed; top: -100px; left: 1rem; z-index: 1000; background: var(--c-ink); color: #fff; padding: .7rem 1rem; border-radius: 10px; }
+.sws-skip:focus { top: 1rem; }
+
+/* Squarespace takeover mode (see docs/SQUARESPACE.md) */
+html.sws-takeover, html.sws-takeover body { margin: 0 !important; padding: 0 !important; background: #FFF9F7 !important; }
+html.sws-takeover body > *:not(#sws-root):not(script):not(style):not(link):not(noscript) { display: none !important; }
+#sws-root { display: block; width: 100%; }
+
+/* Layering contract (single stacking context = .sws):
+   0  section backgrounds / video      1  WebGL canvas (product)      2  section content      50 nav / bars */
+.gl { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .8s var(--ease-out); contain: strict; }
+.gl.is-ready { opacity: 1; }
+.gl canvas { width: 100%; height: 100%; }
+
+/* Reveal base state (JS enhanced only) */
+.sws-js .sws [data-reveal] { opacity: 0; transform: translate3d(0, 28px, 0); will-change: transform, opacity; }
+.sws-js .sws .mask__in { transform: translate3d(0, 108%, 0); will-change: transform; }
+.mask { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
+.mask__in { display: inline-block; }
+.sws-js .sws [data-hero-fade] { opacity: 0; transform: translate3d(0, 18px, 0); }
+
+/* Reduced motion: no scrubbing, no reveal choreography */
+.sws.sws-reduced [data-reveal], .sws.sws-reduced .mask__in, .sws.sws-reduced [data-hero-fade] { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .sws *, .sws *::before, .sws *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Dev tags — clearly marks every placeholder. Hide via data-dev="off" on .sws */
+.dev-tag {
+  display: inline-flex; align-items: center; gap: .4em; padding: .28em .7em; border-radius: 99px;
+  font: 600 .62rem/1 var(--f-sans); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--c-rose-ink); background: rgba(255,255,255,.7); border: 1px dashed rgba(155,72,99,.45);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); white-space: nowrap;
+}
+.dev-tag--inline { margin-left: .4em; vertical-align: middle; }
+.dev-tag--corner { position: absolute; z-index: 3; left: 12px; bottom: 12px; }
+.sws[data-dev="off"] .dev-tag { display: none; }

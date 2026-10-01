@@ -1,0 +1,27 @@
+{
+  "name": "superwoman-stack-experience",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Superwoman Stack — scroll-driven DTC experience (standalone build + Squarespace embed build).",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:site && npm run build:embed",
+    "build:site": "vite build",
+    "build:embed": "vite build --mode embed",
+    "preview": "vite preview",
+    "assets": "node scripts/make-placeholders.mjs",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "check": "node scripts/check-budget.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "gsap": "^3.15.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5",
+    "vite": "^8.3.2"
+  }
+}

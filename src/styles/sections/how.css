@@ -1,0 +1,26 @@
+.how { background: var(--c-white); }
+.how__steps { position: relative; z-index: 2; max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 3rem); }
+.step { position: relative; text-align: center; padding: clamp(1.6rem, 3vw, 3rem) 1rem; border-radius: var(--r-l); }
+.step + .step::before { content: ''; position: absolute; left: calc(clamp(1rem, 3vw, 3rem) / -2); top: 18%; bottom: 18%; width: 1px; background: var(--c-line); }
+.step__art { width: clamp(130px, 14vw, 190px); margin: 0 auto 1.4rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, var(--c-blush) 70%); box-shadow: 0 30px 60px -30px rgba(155,72,99,.4), inset 0 0 0 1px rgba(255,255,255,.9); display: grid; place-items: center; }
+.step__art svg { width: 78%; height: 78%; overflow: visible; }
+.step__num { display: block; font: 600 .7rem/1 var(--f-sans); letter-spacing: .26em; color: var(--c-rose-ink); margin-bottom: .8rem; }
+.step__title { font: 400 clamp(2.4rem, 4.4vw, 4.6rem)/.95 var(--f-display); text-transform: uppercase; letter-spacing: -.03em; margin-bottom: .8rem; }
+.step p { color: var(--c-ink-2); max-width: 26ch; margin: 0 auto; font-size: .95rem; }
+
+/* micro-animations — start when the step enters view (.is-in), loop gently */
+.step svg * { transform-box: fill-box; transform-origin: center; }
+.step.is-in .s1-scoop { animation: scoopDip 3.2s var(--ease-io) infinite; }
+.step.is-in .s1-d { animation: dust 3.2s var(--ease-io) infinite; opacity: 0; }
+.step.is-in .s1-d2 { animation-delay: .15s; } .step.is-in .s1-d3 { animation-delay: .3s; }
+@keyframes scoopDip { 0%, 100% { transform: translate(-14px, -12px) rotate(-14deg); } 45% { transform: translate(0, 8px) rotate(0); } 70% { transform: translate(10px, -6px) rotate(10deg); } }
+@keyframes dust { 0%, 40% { opacity: 0; transform: translateY(0); } 60% { opacity: 1; } 100% { opacity: 0; transform: translateY(-22px); } }
+.step.is-in .s2-swirl { animation: swirl 4s linear infinite; }
+@keyframes swirl { to { transform: rotate(360deg) scaleY(1); } }
+.s2-swirl { transform-origin: 80px 74px; }
+.step .s3-sun { transform: translateY(26px); transition: transform 1.6s var(--ease-out) .2s; }
+.step.is-in .s3-sun { transform: none; }
+.step .s3-rays { opacity: 0; transition: opacity 1.2s ease 1s; }
+.step.is-in .s3-rays { opacity: 1; animation: rays 6s linear infinite 1.6s; }
+@keyframes rays { to { transform: rotate(8deg); } }
+@media (max-width: 799px) { .how__steps { grid-template-columns: 1fr; } .step + .step::before { left: 20%; right: 20%; top: calc(clamp(1rem, 3vw, 3rem) / -2); bottom: auto; width: auto; height: 1px; } .step { padding-block: 1.4rem; } }

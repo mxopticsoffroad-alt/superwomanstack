@@ -1,0 +1,27 @@
+<!-- ============================================================================
+  SQUARESPACE → Settings → Developer Tools → Code Injection → FOOTER
+  1) Replace https://experience.superwomanstack.com with the origin you deployed dist-embed/ to.
+  2) Edit the config block. Everything is optional; defaults are in src/config.js.
+============================================================================ -->
+<script>
+  window.SWS_CONFIG = {
+    takeoverPaths: ['/'],                  // pages the experience replaces ('/' = homepage)
+    showPlaceholderTags: true,             // set to false at launch to hide the dashed "placeholder" pills
+    modelUrl: 'assets/superwoman-product.glb',
+
+    pricing: { currency: '$', once: null, subscribe: null },   // e.g. once: 59, subscribe: 49
+
+    commerce: {
+      provider: 'link',                    // 'demo' | 'link' | 'squarespace'  (see docs/SQUARESPACE.md)
+      productUrl: '/shop/superwoman-stack',// your real Squarespace product page
+      itemId: '', sku: '', subscribeSku: '', flavorSkus: {}
+    },
+
+    links: {                               // where the nav/footer links go
+      story: '/our-story', ingredients: '#stage', faq: '#faq',
+      contact: 'mailto:YOUR-EMAIL', instagram: 'https://instagram.com/YOUR-HANDLE', tiktok: 'https://tiktok.com/@YOUR-HANDLE',
+      privacy: '/privacy-policy', terms: '/terms', refunds: '/refund-policy'
+    }
+  };
+</script>
+<script type="module" src="https://experience.superwomanstack.com/sws-embed.js" crossorigin></script>

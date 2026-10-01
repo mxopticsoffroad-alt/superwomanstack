@@ -1,0 +1,23 @@
+.foot { position: relative; z-index: 2; background: var(--c-ink); color: var(--c-white); padding: clamp(4rem, 8vw, 8rem) var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 2rem); overflow: hidden; }
+.foot__mark { font: 400 clamp(3.2rem, 11.4vw, 15rem)/.85 var(--f-display); letter-spacing: -.045em; text-transform: uppercase; color: var(--c-baby); text-align: center; white-space: nowrap; max-width: var(--maxw); margin: 0 auto clamp(3rem, 6vw, 6rem); }
+.foot__mark em { color: var(--c-peach); }
+.foot__cols { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding-bottom: clamp(2.5rem, 5vw, 4rem); border-bottom: 1px solid rgba(255,249,247,.16); }
+.foot nav { display: grid; gap: .5rem; align-content: start; }
+.foot h2 { font: 600 .68rem/1 var(--f-sans); letter-spacing: .26em; text-transform: uppercase; color: rgba(255,249,247,.5); margin-bottom: .8rem; }
+.foot nav a { font: 400 clamp(1.5rem, 2.2vw, 2.1rem)/1.15 var(--f-display); width: fit-content; position: relative; transition: color .3s, transform .5s var(--ease-out); padding: .1rem 0; }
+.foot nav a:hover { color: var(--c-baby); transform: translateX(6px); }
+.foot__legal { max-width: var(--maxw); margin: 0 auto; padding-top: 1.8rem; display: grid; gap: 1rem; font-size: .76rem; color: rgba(255,249,247,.55); }
+.foot__disclaimer { max-width: 90ch; line-height: 1.6; }
+.foot__legal ul { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; }
+.foot__legal a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255,249,247,.3); }
+.foot__legal a:hover { color: var(--c-baby); }
+@media (max-width: 599px) { .foot__cols { grid-template-columns: 1fr 1fr; } .foot__cols nav:last-child { grid-column: span 2; } .foot__mark { white-space: normal; } }
+
+/* Sticky mobile add-to-cart */
+.atc-bar { position: fixed; z-index: 50; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); display: none; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem .6rem .6rem 1.2rem; border-radius: 999px; transform: translate3d(0, 160%, 0); transition: transform .6s var(--ease-out); }
+.atc-bar.is-visible { transform: none; }
+.atc-bar__info { display: grid; line-height: 1.2; }
+.atc-bar__info b { font: 400 1.25rem/1 var(--f-display); }
+.atc-bar__info small { color: var(--c-ink-3); font-size: .74rem; }
+.atc-bar .btn { min-height: 52px; padding: 0 1.6rem; }
+@media (max-width: 899px) { .atc-bar { display: flex; } }

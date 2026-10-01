@@ -1,0 +1,15 @@
+.formula { background: linear-gradient(180deg, var(--c-white), var(--c-blush) 50%, var(--c-cream)); overflow: hidden; }
+.formula__blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .7; will-change: transform; }
+.formula__blob--a { width: 46vw; height: 46vw; left: -12vw; top: 8%; background: var(--c-baby); }
+.formula__blob--b { width: 38vw; height: 38vw; right: -10vw; bottom: 4%; background: var(--c-lav); }
+.formula__grid { position: relative; z-index: 2; max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(.9rem, 1.6vw, 1.6rem); perspective: 1200px; }
+.fcard { position: relative; min-height: clamp(320px, 34vw, 480px); padding: clamp(1.4rem, 2vw, 2.2rem); border-radius: var(--r-l); display: flex; flex-direction: column; justify-content: flex-end; gap: 1rem; overflow: hidden; transform-style: preserve-3d; transition: box-shadow .5s var(--ease-out), border-color .5s; will-change: transform; }
+.fcard:nth-child(2n) { margin-top: clamp(1.5rem, 5vw, 5rem); }
+.fcard__num { position: absolute; top: clamp(1rem, 1.8vw, 1.8rem); left: clamp(1.4rem, 2vw, 2.2rem); font: 400 clamp(3.4rem, 6vw, 6.4rem)/1 var(--f-display); color: var(--c-baby); -webkit-text-stroke: 1px rgba(23,20,23,.35); letter-spacing: -.04em; transform: translateZ(30px); }
+.fcard__title { font: 400 clamp(1.9rem, 2.6vw, 2.8rem)/1 var(--f-display); letter-spacing: -.01em; text-wrap: balance; transform: translateZ(20px); }
+.fcard p { color: var(--c-ink-2); font-size: .95rem; max-width: 28ch; }
+.fcard__glint { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255,255,255,.75), transparent 55%); opacity: 0; transition: opacity .4s; }
+.fcard:hover .fcard__glint { opacity: 1; }
+.fcard:hover { box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 40px 80px -30px rgba(155,72,99,.4); }
+@media (max-width: 1099px) { .formula__grid { grid-template-columns: repeat(2, 1fr); } .fcard { min-height: 320px; } .fcard:nth-child(2n) { margin-top: 2rem; } }
+@media (max-width: 599px) { .formula__grid { grid-template-columns: 1fr; } .fcard { min-height: 260px; } .fcard:nth-child(2n) { margin-top: 0; } }

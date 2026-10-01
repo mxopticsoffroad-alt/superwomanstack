@@ -1,0 +1,60 @@
+/* ==========================================================================
+   SUPERWOMAN STACK — design tokens
+   Every colour, size, radius, shadow and easing in the site comes from here.
+   ========================================================================== */
+@import '@fontsource/instrument-serif/latin-400.css';
+@import '@fontsource/instrument-serif/latin-400-italic.css';
+@import '@fontsource-variable/hanken-grotesk/index.css';
+
+.sws {
+  /* --- Palette (brief, refined) --- */
+  --c-baby:      #F7DDE5;   /* baby pink — primary */
+  --c-blush:     #FCEEF2;   /* blush */
+  --c-white:     #FFF9F7;   /* warm white */
+  --c-cream:     #F4E8DF;   /* cream */
+  --c-lav:       #E9DFEE;   /* very subtle lavender */
+  --c-peach:     #F9E1D3;   /* pale peach */
+  --c-rose:      #C26A87;   /* deeper rose — accents & small text only */
+  --c-rose-ink:  #9B4863;   /* AA-contrast rose for text on light */
+  --c-ink:       #171417;   /* deep charcoal (never pure black) */
+  --c-ink-2:     rgba(23, 20, 23, .72);
+  --c-ink-3:     rgba(23, 20, 23, .52);
+  --c-line:      rgba(23, 20, 23, .12);
+
+  /* --- Glass --- */
+  --glass-bg:     rgba(255, 249, 247, .56);
+  --glass-bg-2:   rgba(255, 255, 255, .34);
+  --glass-line:   rgba(255, 255, 255, .7);
+  --glass-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 24px 60px -24px rgba(155, 72, 99, .28), 0 2px 8px rgba(23,20,23,.04);
+  --blur: 18px;
+
+  /* --- Type --- */
+  --f-display: 'Instrument Serif', 'Times New Roman', serif;
+  --f-sans:    'Hanken Grotesk Variable', 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-eyebrow: .72rem;
+  --fs-body:    clamp(.98rem, .94rem + .2vw, 1.12rem);
+  --fs-xs:      clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --fs-m:       clamp(2.6rem, 1.6rem + 4.4vw, 5.6rem);
+  --fs-l:       clamp(2.9rem, 1.4rem + 6.4vw, 8rem);
+  --fs-xl:      clamp(3.6rem, .8rem + 13vw, 15rem);
+  --fs-hero:    clamp(3.3rem, .6rem + 12.4vw, 14.5rem);
+
+  /* --- Layout --- */
+  --gutter: clamp(1.1rem, 4vw, 4rem);
+  --maxw: 1480px;
+  --nav-h: 64px;
+  --r-s: 12px; --r-m: 20px; --r-l: 32px; --r-xl: 44px;
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-io:  cubic-bezier(.65, 0, .35, 1);
+  --t-fast: .25s; --t-med: .6s; --t-slow: 1.1s;
+
+  /* --- Dynamic viewport (iOS Safari safe) --- */
+  --vh: 100vh;
+}
+@supports (height: 100svh) { .sws { --vh: 100svh; } }
+
+/* Scroll-driven values (written by JS) */
+.sws { --stage-p: 0; --scoop-p: 0; --day-p: 0; }

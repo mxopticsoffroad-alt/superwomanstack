@@ -1,0 +1,13 @@
+/* ============================================================================
+   Only needed for INLINE mode (Code Block). Paste into Design → Custom CSS.
+   Makes the block full-bleed and removes Squarespace's section padding on that page.
+   Replace #collection-XXXXXXXX with your page's ID (Squarespace shows it in the page's
+   <body id="collection-…"> — inspect the page, or use the URL slug class: body.collection-type-page).
+============================================================================ */
+#collection-XXXXXXXX .page-section,
+#collection-XXXXXXXX .content-wrapper,
+#collection-XXXXXXXX .content { padding: 0 !important; max-width: none !important; }
+#collection-XXXXXXXX .sqs-block-code,
+#collection-XXXXXXXX .sqs-block-code .sqs-block-content { padding: 0 !important; margin: 0 !important; }
+/* Hide Squarespace header/footer on that page (the experience has its own) */
+#collection-XXXXXXXX header#header, #collection-XXXXXXXX footer#footer, #collection-XXXXXXXX .header, #collection-XXXXXXXX .footer { display: none !important; }
