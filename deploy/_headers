@@ -1,0 +1,22 @@
+# Cloudflare Pages / Netlify header rules (copied to the build root).
+# CORS is REQUIRED: Squarespace loads sws-embed.js (an ES module) and its chunks from another origin.
+/*
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Hashed build output never changes → cache forever.
+/sws/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Entry files keep a stable name → short cache so deploys go live quickly.
+/sws-embed.js
+  Cache-Control: public, max-age=300
+/sws-embed.css
+  Cache-Control: public, max-age=300
+
+# Your media: you replace these under the SAME filename, so revalidate daily rather than "immutable".
+/assets/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/data/*
+  Cache-Control: public, max-age=300
